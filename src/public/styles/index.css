@@ -1,0 +1,21 @@
+body {
+  background: #202020;
+  color: white;
+}
+.menu_Cards{
+  margin-top: 20px;
+display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: center;
+}
+
+.card{
+margin:1rem;
+padding: 1rem;
+}
+
+.navbar{
+  margin-bottom: 2rem;
+}

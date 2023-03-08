@@ -1,0 +1,59 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/donantes/update/<%=donante.id%>" method="POST">
+          <input
+            type="text"
+            name="nombre"
+            placeholder="nombre"
+            value="<%=donante.nombre%>"
+            class="form-control mb-2"
+            autofocus
+          />
+          <input
+            type="email"
+            name="correo"
+            placeholder="correo Electrónico"
+            value="<%=donante.correo%>"
+            class="form-control mb-2"
+          />
+          <input
+            type="date"
+            name="fechaNacimiento"
+            placeholder="Fecha de Nacimiento"
+            value="<%=donante.fechaNacimiento%>"
+            class="form-control mb-2"
+          />
+          <input
+            type="number"
+            name="DNI"
+            placeholder="DNI"
+            value="<%=donante.DNI%>"
+            class="form-control mb-2"
+          />
+          <input
+            type="number"
+            name="edad"
+            placeholder="edad"
+            value="<%=donante.edad%>"
+            class="form-control mb-2"
+          />
+          <input
+            type="text"
+            name="telefono"
+            placeholder="Telefono"
+            value="<%=donante.telefono%>"
+            class="form-control mb-2"
+          />
+
+          <button type="submit" class="btn btn-primary">Guardar Donante</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>

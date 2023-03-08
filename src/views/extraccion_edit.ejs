@@ -1,0 +1,52 @@
+<%- include("partials/_header") %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/extracciones/update/<%=extraccion.id%>" method="POST">
+            <input
+            type="date"
+            name="fecha"
+            placeholder="Fecha"
+            class="form-control mb-2"
+            value="<%=extraccion.fecha%>"
+          />
+          <input
+            type="text"
+            name="Donante"
+            placeholder="Donante"
+            class="form-control mb-2"
+            autofocus
+            value="<%=extraccion.Donante%>"
+          />
+          <input
+            type="number"
+            name="Volumen"
+            placeholder="Volumen"
+            class="form-control mb-2"
+            value="<%=extraccion.volumen%>"
+          />
+          <input
+            type="number"
+            name="Grupo"
+            placeholder="GrupoSanguineo"
+            class="form-control mb-2"
+            value="<%=extraccion.grupo%>"
+          />
+          <input
+            type="text"
+            name="RH"
+            placeholder="RH"
+            class="form-control mb-2"
+            value="<%=extraccion.RH%>"
+          />
+          
+          <button type="submit" class="btn btn-info">Grabar Donante</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>
