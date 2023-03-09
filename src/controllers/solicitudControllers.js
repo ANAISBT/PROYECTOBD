@@ -6,11 +6,13 @@ export const renderSolicitudes= async (req, res) => {
   res.render("solicitudes", { solicitud: rows });
 };
 
-export const renderSolicitudByGrupo =async(req,res)=>{
-  const grupo= req.body;
+export const renderSolicitudByGrupo = async (req, res) => {
+  const grupo = req.body.grupoBuscado;
   const [rows] = await pool.query("SELECT * FROM solicitudes USE INDEX (idx_grupoSolicitud) WHERE grupo = ?",[grupo]);
-res.render('solicitudes', {solicitud: rows});
+  res.render('solicitud', { solicitud: rows });
 }
+
+
 
 export const createSolicitudes = async (req, res) => {
   const newCustomer = req.body;
