@@ -1,0 +1,52 @@
+<%- include("partials/_header") %>
+
+<div class="mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card bg-dark">
+      <div class="card-body">
+        <form action="/citas/update/<%=citas.id%>" method="POST">
+            <input
+            type="text"
+            name="nombre"
+            placeholder="nombre"
+            class="form-control mb-2"
+            autofocus
+            value="<%=citas.nombre%>"
+          />
+          <input
+            type="text"
+            name="apellido"
+            placeholder="apellido"
+            class="form-control mb-2"
+            value="<%=citas.apellido%>"
+          />
+          <input
+            type="email"
+            name="correo"
+            placeholder="correo Electrónico"
+            class="form-control mb-2"
+            value="<%=citas.correo%>"
+          />
+          <input
+            type="date"
+            name="fecha"
+            placeholder="Fecha de la cita"
+            class="form-control mb-2"
+            value="<%=citas.fecha%>"
+          />
+          <input
+            type="text"
+            name="hora"
+            placeholder="hora"
+            class="form-control mb-2"
+            value="<%=citas.hora%>"
+          />
+
+          <button type="submit" class="btn btn-primary">Guardar Cita</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>

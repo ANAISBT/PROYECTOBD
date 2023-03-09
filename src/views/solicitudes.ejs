@@ -7,28 +7,28 @@
         <thead>
           <tr>
             <td>n°</td>
-            <td>Fecha</td>
-            <td>Donante</td>
-            <td>Volumen</td>
-            <td>Grupo Sanguineo</td>
+            <td>Nombre</td>
+            <td>Motivo</td>
+            <td>Grupo</td>
             <td>RH</td>
+            <td>cantidad</td>
           </tr>
         </thead>
         <tbody>
-          <% if (extraccion) { %> <% for(var i = 0; i < extraccion.length; i++) {
+          <% if (solicitud) { %> <% for(var i = 0; i < solicitud.length; i++) {
           %>
           <tr>
             <td><%= (i + 1) %></td>
-            <td><%= extraccion[i].fecha %></td>
-            <td><%= extraccion[i].Donante %></td>
-            <td><%= extraccion[i].volumen %></td>
-            <td><%= extraccion[i].grupo %></td>
-            <td><%= extraccion[i].RH %></td>
+            <td><%= solicitud[i].nombre %></td>
+            <td><%= solicitud[i].motivo %></td>
+            <td><%= solicitud[i].grupo %></td>
+            <td><%=solicitud[i].RH %></td>
+            <td><%= solicitud[i].cantidad %></td>
             <td class="d-flex gap-2">
-              <a href="/extracciones/update/<%= extraccion[i].id %>" class="btn btn-info">
+              <a href="/solicitudes/update/<%= solicitud[i].id %>" class="btn btn-info">
                 Edit
               </a>
-              <a href="/extracciones/delete/<%= extraccion[i].id %>" class="btn btn-danger">
+              <a href="/solicitudes/delete/<%= solicitud[i].id %>" class="btn btn-danger">
                 Delete
               </a>
             </td>
@@ -39,40 +39,40 @@
     </div>
     <div class="col-md-4">
       <div class="card-body">
-        <form action="/extracciones/add" method="POST">
+        <form action="/solicitudes/add" method="POST">
             <input
-            type="date"
-            name="fecha"
-            placeholder="Fecha"
+            type="text"
+            name="nombre"
+            placeholder="nombre"
             class="form-control mb-2"
           />
           <input
             type="text"
-            name="Donante"
-            placeholder="Donante"
+            name="motivo"
+            placeholder="motivo"
             class="form-control mb-2"
             autofocus
           />
           <input
-            type="number"
-            name="volumen"
-            placeholder="Volumen"
-            class="form-control mb-2"
-          />
-          <input
             type="text"
             name="grupo"
-            placeholder="GrupoSanguineo"
+            placeholder="grupo"
             class="form-control mb-2"
           />
           <input
             type="text"
             name="RH"
-            placeholder="RH"
+            placeholder="GrupoSanguineo"
+            class="form-control mb-2"
+          />
+          <input
+            type="number"
+            name="cantidad"
+            placeholder="cantidad"
             class="form-control mb-2"
           />
 
-          <button type="submit" class="btn btn-info">Grabar Donante</button>
+          <button type="submit" class="btn btn-info">Grabar Solicitud</button>
         </form>
       </div>
     </div>

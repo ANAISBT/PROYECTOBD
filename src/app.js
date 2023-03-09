@@ -1,8 +1,12 @@
-import customerRoutes from "./routes/customer.routes.js";
+import citasRoutes from './routes/citas.routes.js';
+import customerRoutes from "./routes/donantes.routes.js";
 import express from "express";
+import extraccionRoutes from './routes/extraccion.routes.js';
 import { fileURLToPath } from "url";
+import inventarioRoutes from './routes/inventario.routes.js';
 import morgan from "morgan";
 import path from "path";
+import solicitudesRoutes from './routes/solicitudes.routes.js';
 
 const app = express();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -20,7 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
     res.render("index",{});
 });
-app.use(customerRoutes);
+app.use('/donantes',customerRoutes);
+app.use('/extracciones',extraccionRoutes);
+app.use('/solicitudes',solicitudesRoutes);
+app.use('/inventario',inventarioRoutes);
+app.use('/citas',citasRoutes);
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));

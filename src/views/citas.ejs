@@ -1,0 +1,83 @@
+<%- include("partials/_header") %>
+
+<div class="mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-dark table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>n°</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Correo</td>
+            <td>Fecha de la Cita</td>
+            <td>Hora de la Cita</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (citas) { %> <% for(var i = 0; i < citas.length; i++) {
+          %>
+          <tr>
+            <td><%= (i + 1) %></td>
+            <td><%= citas[i].Nombre %></td>
+            <td><%= citas[i].Apellido %></td>
+            <td><%= citas[i].correo %></td>
+            <td><%= citas[i].fecha %></td>
+            <td><%= citas[i].hora %></td>
+            <td class="d-flex gap-2">
+              <a href="/citas/update/<%= citas[i].id %>" class="btn btn-info">
+                Edit
+              </a>
+              <a href="/citas/delete/<%= citas[i].id %>" class="btn btn-danger">
+                Delete
+              </a>
+            </td>
+          </tr>
+          <% } %> <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="card-body">
+        <form action="/citas/add" method="POST">
+          <input
+            type="text"
+            name="Nombre"
+            placeholder="nombre"
+            class="form-control mb-2"
+            autofocus
+          />
+          <input
+            type="text"
+            name="Apellido"
+            placeholder="apellido"
+            class="form-control mb-2"
+            autofocus
+          />
+          <input
+            type="email"
+            name="correo"
+            placeholder="correo Electrónico"
+            class="form-control mb-2"
+          />
+          <input
+            type="date"
+            name="fecha"
+            placeholder="Fecha de la cita"
+            class="form-control mb-2"
+          />
+          <input
+            type="text"
+            name="hora"
+            placeholder="hora"
+            class="form-control mb-2"
+          />
+
+          <button type="submit" class="btn btn-info">Grabar Cita</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include("partials/_footer") %>

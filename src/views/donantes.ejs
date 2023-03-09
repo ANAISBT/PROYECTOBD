@@ -1,8 +1,8 @@
 <%- include("partials/_header") %>
 
-<div class="container mt-5">
+<div class="mt-5">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <table class="table table-dark table-bordered table-hover">
         <thead>
           <tr>
@@ -24,8 +24,8 @@
             <td><%= donantes[i].correo %></td>
             <td><%= donantes[i].fechaNacimiento %></td>
             <td><%= donantes[i].DNI %></td>
-            <td><%= donantes[i].Edad %></td>
-            <td><%= donantes[i].Telefono %></td>
+            <td><%= donantes[i].edad %></td>
+            <td><%= donantes[i].telefono %></td>
             <td class="d-flex gap-2">
               <a href="/donantes/update/<%= donantes[i].id %>" class="btn btn-info">
                 Edit
@@ -39,7 +39,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
       <div class="card-body">
         <form action="/donantes/add" method="POST">
           <input
@@ -68,10 +68,12 @@
             class="form-control mb-2"
           />
           <input
-            type="number"
+            type="hidden"
             name="edad"
             placeholder="edad"
             class="form-control mb-2"
+            value="0"
+
           />
           <input
             type="text"
