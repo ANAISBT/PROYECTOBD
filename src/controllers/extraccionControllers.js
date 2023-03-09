@@ -8,7 +8,7 @@ export const renderExtractions= async (req, res) => {
 
 export const createExtractions = async (req, res) => {
   const newCustomer = req.body;
-  await pool.query("INSERT INTO extracciones set ?", [newCustomer]);
+  await pool.query("INSERT INTO extracciones SET ?", [newCustomer]);
   res.redirect("/extracciones");
 };
 

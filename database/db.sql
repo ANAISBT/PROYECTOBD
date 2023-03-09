@@ -83,15 +83,16 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE PROCEDURE actualizar_inventario()
+CREATE or replace PROCEDURE actualizar_inventario()
 BEGIN
     DECLARE done INT DEFAULT FALSE;
     DECLARE grupo_sanguineo VARCHAR(15);
-    DECLARE RH VARCHAR(2);
+    DECLARE RH_new VARCHAR(2);
     DECLARE volumen_total INT(3);
+    DECLARE inventario_count INT DEFAULT 0;
     
     -- Cursor para recorrer las extracciones
-    DECLARE cur_extracciones CURSOR FOR SELECT grupo, RH, volumen FROM extracciones;
+    DECLARE cur_extracciones CURSOR FOR SELECT grupo, RH, SUM(volumen) AS total_volumen FROM extracciones GROUP BY grupo, RH;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
     -- Abrir el cursor
@@ -99,10 +100,19 @@ BEGIN
     
     -- Recorrer las extracciones
     WHILE NOT done DO
-        FETCH cur_extracciones INTO grupo_sanguineo, RH, volumen_total;
+        FETCH cur_extracciones INTO grupo_sanguineo, RH_new, volumen_total;
         
-        -- Actualizar el inventario
-        UPDATE inventario SET volumen = volumen + volumen_total WHERE grupo = grupo_sanguineo AND RH = RH;
+        -- Verificar si ya existe una fila con el mismo grupo y RH en la tabla "inventario"
+        SELECT COUNT(*) INTO inventario_count FROM inventario WHERE grupo = grupo_sanguineo AND RH = RH_new;
+        
+        IF inventario_count = 0 THEN
+            -- Insertar una nueva fila en la tabla "inventario"
+            INSERT INTO inventario (grupo, RH, volumen) VALUES (grupo_sanguineo, RH_new, volumen_total);
+        ELSE
+            -- Actualizar la fila existente en la tabla "inventario"
+            UPDATE inventario SET volumen = volumen + volumen_total WHERE grupo = grupo_sanguineo AND RH = RH_new;
+        END IF;
+
     END WHILE;
     
     -- Cerrar el cursor
@@ -113,13 +123,15 @@ DELIMITER ;
 
 
 
+
 DELIMITER $$
-CREATE TRIGGER actualizar_inventario AFTER INSERT ON extracciones
+CREATE or replace TRIGGER actualizarInventario AFTER INSERT ON extracciones
 FOR EACH ROW
 BEGIN
     CALL actualizar_inventario();
 END$$
 DELIMITER ;
+
 
 
 CREATE INDEX idx_grupoSolicitud ON solicitudes(grupo);
