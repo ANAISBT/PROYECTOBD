@@ -7,9 +7,9 @@ export const renderSolicitudes= async (req, res) => {
 };
 
 export const renderSolicitudByGrupo =async(req,res)=>{
-  const { grupo } = req.params;
-  const [rows]=await pool.query("SELECT * FROM solicitudes USE INDEX (idx_grupoSolicitud) WHERE grupo = ?",[grupo]);
-  res.render("solicitudes", {solicitud:rows,columnas:["nombre","motivo","grupo","RH","cantidad"]});
+  const grupo= req.body;
+  const [rows] = await pool.query("SELECT * FROM solicitudes USE INDEX (idx_grupoSolicitud) WHERE grupo = ?",[grupo]);
+res.render('solicitudes', {solicitud: rows});
 }
 
 export const createSolicitudes = async (req, res) => {

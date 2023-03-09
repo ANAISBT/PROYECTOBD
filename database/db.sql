@@ -49,6 +49,18 @@ CREATE TABLE citas(
   hora text not null
 );
 
+CREATE TABLE usuarios(
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+usuario VARCHAR(15) NOT NULL,
+contraseña VARCHAR(15) NOT NULL
+);
+
+INSERT INTO usuarios values ('1','Anais','Bustamante');
+INSERT INTO usuarios values ('2','Yosmar','Tejeda');
+INSERT INTO usuarios values ('3','Josue','Montes');
+INSERT INTO usuarios values ('4','Ahmad','Velásquez');
+INSERT INTO usuarios values ('5','Sebastian','Cespedez');
+
 CREATE VIEW sangre_disponibles AS
 SELECT grupo, RH, SUM(volumen) AS volumen_total FROM extracciones GROUP BY grupo, RH;
 

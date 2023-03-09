@@ -4,6 +4,7 @@ import express from "express";
 import extraccionRoutes from './routes/extraccion.routes.js';
 import { fileURLToPath } from "url";
 import inventarioRoutes from './routes/inventario.routes.js';
+import loginRoutes from './routes/login.routes.js';
 import morgan from "morgan";
 import path from "path";
 import solicitudesRoutes from './routes/solicitudes.routes.js';
@@ -22,13 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.get("/", (req, res) => {
-    res.render("index",{});
+    res.render("login",{});
 });
 app.use('/donantes',customerRoutes);
 app.use('/extracciones',extraccionRoutes);
 app.use('/solicitudes',solicitudesRoutes);
 app.use('/inventario',inventarioRoutes);
 app.use('/citas',citasRoutes);
+app.use(loginRoutes);
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));
