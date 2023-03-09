@@ -2,6 +2,7 @@ import {
     createSolicitudes,
     deleteSolicitudes,
     editSolicitudes,
+    renderSolicitudByGrupo,
     renderSolicitudes,
     updateSolicitudes
 } from "../controllers/solicitudControllers.js";
@@ -11,6 +12,7 @@ import { Router } from "express";
 const router = Router();
   
   router.get("/", renderSolicitudes);
+  router.get("/byGrupo", renderSolicitudByGrupo);
   router.post("/add", createSolicitudes);
   router.get("/update/:id", editSolicitudes);
   router.post("/update/:id", updateSolicitudes);

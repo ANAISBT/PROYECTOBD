@@ -6,6 +6,12 @@ export const renderSolicitudes= async (req, res) => {
   res.render("solicitudes", { solicitud: rows });
 };
 
+export const renderSolicitudByGrupo =async(req,res)=>{
+  const { grupo } = req.params;
+  const [rows]=await pool.query("SELECT * FROM solicitudes USE INDEX (idx_grupoSolicitud) WHERE grupo = ?",[grupo]);
+  res.render("solicitudes", {solicitud:rows,columnas:["nombre","motivo","grupo","RH","cantidad"]});
+}
+
 export const createSolicitudes = async (req, res) => {
   const newCustomer = req.body;
   await pool.query("INSERT INTO solicitudes set ?", [newCustomer]);
