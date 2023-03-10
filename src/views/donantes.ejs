@@ -1,14 +1,14 @@
 <%- include("partials/_header") %>
 
 <div class="mt-5">
-  <div class="row">
-    <div class="col-md-7">
-      <table class="table table-dark table-bordered table-hover">
+  <div class="col">
+    <div class="card col-9">
+      <table class="table table-dark table-bordered table-hover tabla_donantes">
         <thead>
           <tr>
             <td>n°</td>
-            <td>Nombre</td>
-            <td>Correo</td>
+            <td>Nombre del Donante</td>
+            <td>Correo Electrónico</td>
             <td>Fecha de Nacimiento</td>
             <td>DNI</td>
             <td>Edad</td>
@@ -26,12 +26,12 @@
             <td><%= donantes[i].DNI %></td>
             <td><%= donantes[i].edad %></td>
             <td><%= donantes[i].telefono %></td>
-            <td class="d-flex gap-2">
+            <td class="d-flex gap-2 botones">
               <a href="/donantes/update/<%= donantes[i].id %>" class="btn btn-info">
-                Edit
+                Editar
               </a>
               <a href="/donantes/delete/<%= donantes[i].id %>" class="btn btn-danger">
-                Delete
+                Borrar
               </a>
             </td>
           </tr>
@@ -39,9 +39,11 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-4">
+    <div class="card col-md-4">
+
       <div class="card-body">
         <form action="/donantes/add" method="POST">
+          <label for="nombre">Nombre del Donador</label>
           <input
             type="text"
             name="nombre"
@@ -49,24 +51,28 @@
             class="form-control mb-2"
             autofocus
           />
+          <label for="correo">Correo Electrónico</label>
           <input
             type="email"
             name="correo"
             placeholder="correo Electrónico"
             class="form-control mb-2"
           />
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
           <input
             type="date"
             name="fechaNacimiento"
             placeholder="Fecha de Nacimiento"
             class="form-control mb-2"
           />
+          <label for="DNI">DNI</label>
           <input
             type="number"
             name="DNI"
             placeholder="DNI"
             class="form-control mb-2"
           />
+          
           <input
             type="hidden"
             name="edad"
@@ -75,6 +81,7 @@
             value="0"
 
           />
+          <label for="telefono">Telefono Celular</label>
           <input
             type="text"
             name="telefono"

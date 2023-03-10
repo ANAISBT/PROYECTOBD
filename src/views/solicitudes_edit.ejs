@@ -5,6 +5,7 @@
     <div class="col-md-5 offset-md-3 card bg-dark">
       <div class="card-body">
         <form action="/solicitudes/update/<%=solicitud.id%>" method="POST">
+          <label for="nombre">Nombre del Receptor</label>
             <input
             type="text"
             name="nombre"
@@ -13,6 +14,7 @@
             autofocus
             value="<%=solicitud.nombre%>"
           />
+          <label for="Motivo">Motivo de la Donación</label>
           <input
             type="text"
             name="motivo"
@@ -20,6 +22,7 @@
             class="form-control mb-2"
             value="<%=solicitud.motivo%>"
           />
+          <label for="correo">Grupo Sanguineo</label>
           <input
             type="text"
             name="grupo"
@@ -27,6 +30,7 @@
             class="form-control mb-2"
             value='<%=solicitud.grupo%>'
           />
+          <label for="correo">RH</label>
           <input
             type="text"
             name="RH"
@@ -34,6 +38,7 @@
             class="form-control mb-2"
             value='<%=solicitud.RH%>'
           />
+          <label for="correo">Cantidad(Litros)</label>
           <input
             type="number"
             name="cantidad"
@@ -42,7 +47,7 @@
             value='<%=solicitud.cantidad%>'
           />
           
-          <button type="submit" class="btn btn-info">Grabar Solicitud</button>
+          <button type="submit" class="btn btn-info">Editar Solicitud</button>
         </form>
       </div>
     </div>

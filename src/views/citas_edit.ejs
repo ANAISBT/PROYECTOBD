@@ -5,6 +5,7 @@
     <div class="col-md-5 offset-md-3 card bg-dark">
       <div class="card-body">
         <form action="/citas/update/<%=citas.id%>" method="POST">
+          <label for="nombre">Nombre del Paciente</label>
             <input
             type="text"
             name="nombre"
@@ -13,6 +14,7 @@
             autofocus
             value="<%=citas.nombre%>"
           />
+          <label for="Apellido">Apellido del Paciente</label>
           <input
             type="text"
             name="apellido"
@@ -20,6 +22,7 @@
             class="form-control mb-2"
             value="<%=citas.apellido%>"
           />
+          <label for="correo">Correo Electrónico</label>
           <input
             type="email"
             name="correo"
@@ -27,6 +30,7 @@
             class="form-control mb-2"
             value="<%=citas.correo%>"
           />
+          <label for="fecha">Fecha de la Cita</label>
           <input
             type="date"
             name="fecha"
@@ -34,6 +38,7 @@
             class="form-control mb-2"
             value="<%=citas.fecha%>"
           />
+          <label for="hora">Hora de la Cita</label>
           <input
             type="text"
             name="hora"

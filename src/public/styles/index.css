@@ -12,8 +12,37 @@ justify-content: center;
 }
 
 .card{
-margin:1rem;
-padding: 1rem;
+  width: 400px; /* Ancho de la tarjeta */
+  height: 200px; /* Altura de la tarjeta */
+  margin: 20px auto; /* Margen automático a la izquierda y derecha para centrar horizontalmente */
+  display: flex; /* Utiliza flexbox para centrar verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  padding: 2rem;
+  
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+label{
+  margin-bottom: 15px ;
+  font-weight: 500;
+}
+
+button{
+  margin-top: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+    margin-top: 20px;
+    margin: 10px;
+    align-items: center;
+    text-align: center;
 }
 
 .navbar{
@@ -21,6 +50,7 @@ padding: 1rem;
 }
 .row{
   justify-content: center;
+  
 }
 .Bienvenida{
 
@@ -31,4 +61,24 @@ padding: 1rem;
 snap{
   font-weight: 500;
   
+}
+.Titulo{
+  text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.body{
+  background-color: rgb(178, 235, 235);
+}
+
+.tabla_donantes{
+  width: auto;
+}
+
+.botones{
+  display: flex;
+  flex-direction: column;
 }

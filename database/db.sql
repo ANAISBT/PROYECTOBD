@@ -49,6 +49,18 @@ CREATE TABLE citas(
   hora text not null
 );
 
+CREATE TABLE grupoSanguineo(
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  grupo VARCHAR(15) NOT NULL
+);
+
+
+CREATE TABLE RH(
+  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  valor VARCHAR(15) NOT NULL
+);
+
+
 CREATE TABLE usuarios(
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 usuario VARCHAR(15) NOT NULL,
@@ -60,6 +72,14 @@ INSERT INTO usuarios values ('2','Yosmar','Tejeda');
 INSERT INTO usuarios values ('3','Josue','Montes');
 INSERT INTO usuarios values ('4','Ahmad','Velásquez');
 INSERT INTO usuarios values ('5','Sebastian','Cespedez');
+
+INSERT INTO grupoSanguineo values ('1','A');
+INSERT INTO grupoSanguineo values ('2','B');
+INSERT INTO grupoSanguineo values ('3','AB');
+INSERT INTO grupoSanguineo values ('4','O');
+
+INSERT INTO RH values ('1','+');
+INSERT INTO RH values ('2','-');
 
 CREATE VIEW sangre_disponibles AS
 SELECT grupo, RH, SUM(volumen) AS volumen_total FROM extracciones GROUP BY grupo, RH;
@@ -135,9 +155,3 @@ DELIMITER ;
 
 
 CREATE INDEX idx_grupoSolicitud ON solicitudes(grupo);
-
--- to show all tables
-show tables;
-
--- to describe table
-describe donantes;

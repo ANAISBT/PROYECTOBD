@@ -1,15 +1,15 @@
 <%- include("partials/_header") %>
 
 <div class="mt-5">
-  <div class="row">
-    <div class="col-md-6">
+  <div class="col">
+    <div class="card col-9">
       <table class="table table-dark table-bordered table-hover">
         <thead>
           <tr>
             <td>n°</td>
-            <td>Nombre</td>
-            <td>Apellido</td>
-            <td>Correo</td>
+            <td>Nombre del Paciente</td>
+            <td>Apellido del Paciente</td>
+            <td>Correo Electrónico</td>
             <td>Fecha de la Cita</td>
             <td>Hora de la Cita</td>
           </tr>
@@ -37,9 +37,10 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-4">
+    <div class=" card col-md-4">
       <div class="card-body">
         <form action="/citas/add" method="POST">
+          <label for="nombre">Nombre del Paciente</label>
           <input
             type="text"
             name="Nombre"
@@ -47,6 +48,7 @@
             class="form-control mb-2"
             autofocus
           />
+          <label for="Apellido">Apellido del Paciente</label>
           <input
             type="text"
             name="Apellido"
@@ -54,18 +56,21 @@
             class="form-control mb-2"
             autofocus
           />
+          <label for="correo">Correo Electrónico</label>
           <input
             type="email"
             name="correo"
             placeholder="correo Electrónico"
             class="form-control mb-2"
           />
+          <label for="fecha">Fecha de la Cita</label>
           <input
             type="date"
             name="fecha"
             placeholder="Fecha de la cita"
             class="form-control mb-2"
           />
+          <label for="hora">Hora de la Cita</label>
           <input
             type="text"
             name="hora"

@@ -5,6 +5,7 @@
     <div class="col-md-5 offset-md-3 card bg-dark">
       <div class="card-body">
         <form action="/extracciones/update/<%=extraccion.id%>" method="POST">
+          <label for="fechaNacimiento">Fecha de Extracción</label>
             <input
             type="date"
             name="fecha"
@@ -12,6 +13,7 @@
             class="form-control mb-2"
             value="<%=extraccion.fecha%>"
           />
+          <label for="nombre">Nombre del Donador</label>
           <input
             type="text"
             name="Donante"
@@ -20,6 +22,7 @@
             autofocus
             value="<%=extraccion.Donante%>"
           />
+          <label for="volumen">Cantidad de Sangre Extraida</label>
           <input
             type="number"
             name="Volumen"
@@ -27,13 +30,15 @@
             class="form-control mb-2"
             value="<%=extraccion.volumen%>"
           />
+          <label for="grupo">Grupo Sanguineo</label>
           <input
-            type="number"
+            type="text"
             name="Grupo"
             placeholder="GrupoSanguineo"
             class="form-control mb-2"
             value="<%=extraccion.grupo%>"
           />
+          <label for="RH">RH</label>
           <input
             type="text"
             name="RH"
@@ -42,7 +47,7 @@
             value="<%=extraccion.RH%>"
           />
           
-          <button type="submit" class="btn btn-info">Grabar Donante</button>
+          <button type="submit" class="btn btn-info">Editar Datos de la extracción</button>
         </form>
       </div>
     </div>
